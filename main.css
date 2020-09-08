@@ -1,0 +1,142 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#000;
+    color:#fff;
+    box-sizing: border-box;
+    margin:0;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin:auto;
+}
+
+td {
+    border-color: transparent;
+    background: none;
+}
+
+svg {
+    margin: 0
+}
+.column::-webkit-scrollbar {
+    background:#000;
+    width: 2em;
+}
+
+.column::-webkit-scrollbar-thumb {
+    background:#0a0a0a;
+    width: 2em;
+    border-radius: 2em;
+}
+
+body{
+    margin:0;
+}
+
+.left {
+    direction:rtl;
+}
+
+.column {
+    position:relative;
+    float: left;
+    width: 50%;
+    /* border: 1px solid red; */
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.column.left {
+    position:relative;
+    padding-left: 0;
+}
+
+.displayArea {
+    max-width: 46rem;
+    direction: ltr;
+    margin-left: 1.5rem;
+    margin-right: 0.5rem;
+    text-align: center;
+}
+
+.column.left > .displayArea {
+    margin-right: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.topbar {
+    position: sticky;
+    z-index: 5;
+    top: 0;
+    margin: auto;
+    width: 100%;
+    padding: 4px 0 8px 0;
+    background: #000;
+    text-align: center;
+    min-height: 2.4rem;
+}
+
+.frame {
+    padding: 1rem;
+    background: #ddd;
+    min-height: 3em;
+    color: #000;
+    max-width: 46rem;
+}
+
+.square {
+    width: 2em;
+    max-width: 2em;
+    display: inline-block;
+    padding: 0;
+}
+
+.l {
+    position: absolute;
+    left: 0px
+}
+
+.r {
+    position: absolute;
+    right: 0px;
+}
+
+.c {
+    display: inline-block;
+}
+
+button {
+    border: none;
+    padding: 0;
+    vertical-align: middle;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+input {
+    font-size: 1em;
+}
+
+button svg {
+    vertical-align: middle;
+    line-height: 1.2rem;
+}
+
+#copyright {
+    float: right;
+    margin: 4px 0;
+    color: #555;
+    font-size: 0.875rem;
+}
