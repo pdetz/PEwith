@@ -6,6 +6,22 @@ $(document).ready(function(){
     $("#warmup").after(newbutton, noclass);
 });
 
+function Lesson (name, mp, week, grade) {
+    this.name = name;
+    this.mp = mp;
+    this.week = week;
+    this.grade = grade;
+    this.parts = [];
+
+    this.parts.push(new Part("WARM UP!"));
+}
+
+function Part (name, type) {
+    this.name = name;
+    this.type = type;
+    this.el = make("div.panel" + type);
+}
+
 function make(el) {
     let split1 = el.split(/[#]/);
     let elementSplit = split1[0];

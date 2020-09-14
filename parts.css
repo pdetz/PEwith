@@ -1,0 +1,35 @@
+
+.panel {
+    margin: 4px;
+    padding: 4px;
+    width: 100%;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+button.new {
+    margin: 4px;
+    padding: 4px;
+    font-size: 1.2em;
+}
+
+.warmup {
+    background-color: #c22;
+}
+
+.intro {
+    background-color: #0a2;
+}
+
+.objectives {
+    background-color: #22c;
+}
+
+.activity {
+    background-color: #a2a;
+}
+
+.quiz {
+    background-color: #fc0;
+    color: #0a2;
+}
