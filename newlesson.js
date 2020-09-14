@@ -1,24 +1,30 @@
 $(document).ready(function(){
 
-    make("button.class1.class2#id.class3");
-    make("button.class1.class2.class3");
+    let newbutton = make("button.class1.class2#newbutton.class3").html("new");
+    let noclass = make("button#button2.class1.class2.class3").html("no class");
 
+    $("#warmup").after(newbutton, noclass);
 });
 
 function make(el) {
     let split1 = el.split(/[#]/);
     let elementSplit = split1[0];
-    let idSplit = split1[1];
-    
     let element = elementSplit.split(/[.]/)[0];
-    let id = idSplit.split(/[.]/)[0];
+    let css = parseClasses(elementSplit);
 
-    let css = parseClasses(elementSplit) + " " + parseClasses(idSplit);
+    let $el = $(document.createElement(element))
+                .attr("class", css);
 
-    let $el = $(document.createElement(element));
+    if (split1.length > 1){
 
-    
-    //return $el;
+        let idSplit = split1[1];
+        let id = idSplit.split(/[.]/)[0];
+        css += " " + parseClasses(idSplit);
+
+        $el.attr("id", id).attr("class", css);
+    }
+
+    return $el;
 }
 
 function parseClasses(str){

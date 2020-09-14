@@ -63,14 +63,6 @@ button {
     font-size: 0.875rem;
 }
 
-div.intro {
-    margin: 4px;
-    padding: 4px;
-    background-color: #0a2;
-    color: #fff;
-    font-size: 1.2em;
-}
-
 .text {
     background-color: #ddd;
     color: #000;
@@ -82,5 +74,21 @@ div.intro {
 textarea {
     display: block;
     width: 100%;
-    min-height: 3em;
+    min-height: 13em;
+    resize: vertical;
+}
+
+div.panel {
+    margin: 4px;
+    padding: 4px;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.warmup {
+    background-color: #a22;
+}
+
+.intro {
+    background-color: #0a2;
 }
