@@ -47,16 +47,18 @@ $(document).ready(function(){
         e.stopImmediatePropagation();
         let input = $(this);
         let part = input.data("part");
-        console.log(input.val());
-        part.displayTitle.html(input.val());
+        let value = input.val();
+        part.displayTitle.html(value);
+        part.html = value;
     });
 
     $("#lessonarea").on("keyup", "textarea", function(e){
         e.stopImmediatePropagation();
         let input = $(this);
         let part = input.data("part");
-        console.log(input.val());
-        part.htmlDisplay.html(input.val());
+        let value = input.val();
+        part.htmlDisplay.html(value);
+        part.name = value;
     });
 });
 
