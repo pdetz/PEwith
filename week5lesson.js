@@ -3,7 +3,7 @@ WEEK5 = {"name":"Basketball 3","mp":"1","week":"3","grade":"3-5","parts":[{"name
 
 $(document).ready(function(){
 
-    let lesson = new Lesson(EMERGENCYK2);
+    let lesson = new Lesson(WEEK5);
     lesson.display($("#lessonarea"));
 
 });
