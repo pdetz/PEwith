@@ -108,3 +108,7 @@ textarea {
     min-height: 13em;
     resize: vertical;
 }
+
+img {
+    width: 100%;
+}

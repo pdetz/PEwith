@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    let lesson = new Lesson(EMERGENCYK2);
+    let lesson = new Lesson(LESSONS[0]);
     lesson.display($("#lessonarea"));
 
 });
