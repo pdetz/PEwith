@@ -1,9 +1,18 @@
-const PLUS = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>';
-const X = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
-
 $(document).ready(function(){
 
-    let lesson = new Lesson ("Basketball 3", "1", "3", "3-5");
+    /*Data from URL
+    let grade = "3";
+    let week = "5";
+    let mp = "1";
+    */
+
+    let allLessons = [];
+
+    LESSONS.forEach(lesson => {
+        allLessons.push(new Lesson(lesson));
+    });
+
+    let lesson = allLessons[allLessons.length - 1];
     lesson.edit();
     lesson.display($("#displayarea"));
 
@@ -23,7 +32,7 @@ $(document).ready(function(){
         let button = $(this);
         let part = button.data("part");
         button.blur();
-        let activity = new Part (button.data("name"), button.data("type"));
+        let activity = newPart(button.data("name"), button.data("type"));
         part.el.last().after(activity.el);
         let index = lesson.parts.indexOf(part);
         lesson.parts.splice(index + 1,0, activity);
@@ -50,6 +59,15 @@ $(document).ready(function(){
         let value = input.val();
         part.displayTitle.html(value);
         part.name = value;
+    });
+    
+    $(".info").on("keyup", "input", function(e){
+        e.stopImmediatePropagation();
+        let input = $(this);
+        let prop = input.data("prop");
+        let lesson = input.closest("table").data("lesson");
+        let value = input.val();
+        lesson[prop] = value;
     });
 
     $("#lessonarea").on("keyup", "textarea", function(e){
@@ -79,20 +97,71 @@ function SavedLesson(lesson) {
     }, this);
 }
 
-function Lesson (name, mp, week, grade) {
-    this.name = name;
-    this.mp = mp;
-    this.week = week;
-    this.grade = grade;
+function newLesson (name, mp, week, grade) {
+
+    let lesson = {"name": name, "mp": mp, "week": week, "grade": grade, parts: []};
+
+    lesson.parts.push(newPart("WARM UP!", "warmup"));
+    lesson.parts.push(newPart("Introduction", "intro"));
+    lesson.parts.push(newPart("Objectives", "objectives"));
+    lesson.parts.push(newPart("Quiz", "quiz"));
+
+    return new Lesson(lesson);
+}
+
+function newPart(name, type) {
+    let part = {"name": name, "type": type, "html": ""};
+    return new Part(part);
+}
+
+function Lesson (saved) {
+    this.name = saved.name;
+    this.mp = saved.mp;
+    this.week = saved.week;
+    this.grade = saved.grade;
     this.parts = [];
 
-    this.parts.push(new Part("WARM UP!", "warmup"));
-    this.parts.push(new Part("Introduction", "intro"));
-    this.parts.push(new Part("Objectives", "objectives"));
+    saved.parts.forEach(part =>{
+        this.parts.push(new Part(part));
+    });
+    
+    this.nameInput = make("input")
+                    .attr("value",this.name)
+                    .data("prop", "name");
+    this.mpInput = make("input")
+                    .attr("value",this.mp)
+                    .data("prop", "mp");
+    this.weekInput = make("input")
+                    .attr("value",this.week)
+                    .data("prop", "week");
+    this.gradeInput = make("input")
+                    .attr("value",this.grade)
+                    .data("prop", "grade");
+
+    this.info = make("table.info").data("lesson", this)
+                .append(make("tbody")
+                    .append(make("tr")
+                        .append(make("td").append("Lesson Name: "))
+                        .append(make("td").append(this.nameInput))
+                        )
+                    .append(make("tr")
+                        .append(make("td").append("Marking Period: "))
+                        .append(make("td").append(this.mpInput))
+                        )
+                    .append(make("tr")
+                        .append(make("td").append("Week: "))
+                        .append(make("td").append(this.weekInput))
+                        )
+                    .append(make("tr")
+                        .append(make("td").append("Grade Levels: "))
+                        .append(make("td").append(this.gradeInput))
+                        ));
+    
 }
 
 Lesson.prototype.edit = function(){
     let lesson = this;
+    $("#lessonarea").append(lesson.info);
     lesson.parts.forEach(part =>{
         $("#lessonarea").append(part.el);
     });
@@ -106,20 +175,21 @@ Lesson.prototype.display = function(area) {
     });
 }
 
-function Part (name, type) {
-    this.name = name;
-    this.type = type;
-    this.html = "";
+function Part (savedPart) {
+    this.name = savedPart.name;
+    this.type = savedPart.type;
+    this.html = savedPart.html;
+    console.log(this.html);
     this.nameInput = make("input")
-                    .attr("value",name)
+                    .attr("value",this.name)
                     .data("part", this);
     this.deleteButton = make("button.delete")
                     .html(X)
                     .data("part", this);
     this.htmlInput = make("textarea")
-                    .attr("value","")
+                    .val(this.html)
                     .data("part", this);
-    this.el = make("div.panel." + type)
+    this.el = make("div.panel." + this.type)
                 .append(this.nameInput)
                 .append(this.deleteButton)
                 .append(this.htmlInput);
@@ -132,7 +202,7 @@ function Part (name, type) {
     
     this.htmlDisplay = make("div.frame").html(this.html);
     this.displayTitle = make("span").html(this.name);
-    this.display = make("div.panel." + type)
+    this.display = make("div.panel." + this.type)
                     .append(this.displayTitle)
                     .append(this.htmlDisplay);
 }
