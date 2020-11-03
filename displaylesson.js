@@ -3,6 +3,11 @@ $(document).ready(function(){
     let lesson = new Lesson(LESSONS[LESSONS.length - 1]);
     lesson.display($("#lessonarea"));
 
+    let queryString = window.location.search;
+    const lessonInfo = new URLSearchParams(queryString);
+
+    console.log(lessonInfo.get(test));
+
 });
 
 function Lesson (saved) {
