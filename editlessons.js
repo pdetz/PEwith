@@ -179,7 +179,7 @@ function Part (savedPart) {
     this.name = savedPart.name;
     this.type = savedPart.type;
     this.html = savedPart.html;
-    console.log(this.html);
+    
     this.nameInput = make("input")
                     .attr("value",this.name)
                     .data("part", this);

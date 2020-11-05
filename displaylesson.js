@@ -6,7 +6,7 @@ $(document).ready(function(){
     let queryString = window.location.search;
     const lessonInfo = new URLSearchParams(queryString);
 
-    console.log(lessonInfo.get(test));
+    console.log(lessonInfo.get("test"));
 
 });
 
