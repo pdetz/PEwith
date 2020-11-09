@@ -1,15 +1,17 @@
 $(document).ready(function(){
 
-    /*Data from URL
-    let grade = "3";
-    let week = "5";
-    let mp = "1";
-    */
+    const lessonInfo = new URLSearchParams(window.location.search);
+    source = lessonInfo.get("lessons");
+
+    let lessons = MP2;
+    if (source == "fun"){
+        lessons = FUN;
+    }
 
     let allLessons = [];
 
-    MP2.forEach(mp2lesson => {
-        let newLesson = new Lesson(mp2lesson);
+    lessons.forEach(savedLesson => {
+        let newLesson = new Lesson(savedLesson);
         allLessons.push(newLesson);
     });
 
@@ -42,7 +44,7 @@ $(document).ready(function(){
     $("#saveadd").on("click", "button.new", function(e){
         e.stopImmediatePropagation();
         $(this).blur;
-        lesson = new Lesson(MP2[MP2.length - 1]);
+        lesson = new Lesson(lessons[lessons.length - 1]);
         allLessons.push(lesson);
         lesson.switchTo();
     });

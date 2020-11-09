@@ -6,12 +6,21 @@ $(document).ready(function(){
     teacher = lessonInfo.get("teacher");
 
     let allLessons = [];
-    savedLessons.forEach(savedLesson => {
-        if (savedLesson.grade.includes(grade.toString()) && savedLesson.published){
-            let newLesson = new Lesson(savedLesson);
+    if (grade == "fun"){
+        FUN.forEach(exercise => {
+            let newLesson = new Lesson(exercise);
             allLessons.push(newLesson);
-        }
-    });
+            newLesson.button.html(newLesson.week);
+        });
+    }
+    else {
+        savedLessons.forEach(savedLesson => {
+            if (savedLesson.grade.includes(grade.toString()) && savedLesson.published){
+                let newLesson = new Lesson(savedLesson);
+                allLessons.push(newLesson);
+            }
+        });
+    }
 
     let lesson = allLessons[allLessons.length - 1];
     lesson.display(grade, teacher);
