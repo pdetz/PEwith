@@ -1,0 +1,129 @@
+button.menu:nth-child(1){
+    border-color: #f00;
+    color: #f00;
+}
+button.menu:nth-child(1):hover{
+    background-color: #f00;
+    color: #000;
+}
+button.menu:nth-child(1).sel{
+    background-color: #f00;
+    color: #000;
+}
+
+button.menu:nth-child(2){
+    border-color: #f40;
+    color: #f40;
+}
+button.menu:nth-child(2):hover{
+    background-color: #f40;
+    color: #000;
+}
+button.menu:nth-child(2).sel{
+    background-color: #f40;
+    color: #000;
+}
+
+button.menu:nth-child(3){
+    border-color: #f80;
+    color: #f80;
+}
+button.menu:nth-child(3):hover{
+    background-color: #f80;
+    color: #000;
+}
+button.menu:nth-child(3).sel{
+    background-color: #f80;
+    color: #000;
+}
+
+button.menu:nth-child(4){
+    border-color: #ff0;
+    color: #ff0;
+}
+button.menu:nth-child(4):hover{
+    background-color: #ff0;
+    color: #000;
+}
+button.menu:nth-child(4).sel{
+    background-color: #ff0;
+    color: #000;
+}
+
+button.menu:nth-child(5){
+    border-color: #8f0;
+    color: #8f0;
+}
+button.menu:nth-child(5):hover{
+    background-color: #8f0;
+    color: #000;
+}
+button.menu:nth-child(5).sel{
+    background-color: #8f0;
+    color: #000;
+}
+
+button.menu:nth-child(6){
+    border-color: #0f0;
+    color: #0f0;
+}
+button.menu:nth-child(6):hover{
+    background-color: #0f0;
+    color: #000;
+}
+button.menu:nth-child(6).sel{
+    background-color: #0f0;
+    color: #000;
+}
+
+button.menu:nth-child(7){
+    border-color: #0ff;
+    color: #0ff;
+}
+button.menu:nth-child(7):hover{
+    background-color: #0ff;
+    color: #000;
+}
+button.menu:nth-child(7).sel{
+    background-color: #0ff;
+    color: #000;
+}
+
+button.menu:nth-child(8){
+    border-color: #4af;
+    color: #4af;
+}
+button.menu:nth-child(8):hover{
+    background-color: #4af;
+    color: #000;
+}
+button.menu:nth-child(8).sel{
+    background-color: #4af;
+    color: #000;
+}
+
+button.menu:nth-child(9){
+    border-color: #84f;
+    color: #84f;
+}
+button.menu:nth-child(9):hover{
+    background-color: #84f;
+    color: #000;
+}
+button.menu:nth-child(9).sel{
+    background-color: #84f;
+    color: #000;
+}
+
+button.menu:nth-child(10){
+    border-color: #c4f;
+    color: #c4f;
+}
+button.menu:nth-child(10):hover{
+    background-color: #c4f;
+    color: #000;
+}
+button.menu:nth-child(10).sel{
+    background-color: #c4f;
+    color: #000;
+}
