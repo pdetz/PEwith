@@ -1,5 +1,5 @@
 .panel {
-    margin: 1em 0.2em;
+    margin:1em auto;
     padding: 4px;
     width: 100%;
     font-size: 1.2em;
@@ -82,4 +82,15 @@ button.delete {
 button.new.quiz {
     background-color: #fc0;
     color: #0a2;
+}
+
+input.quiz {
+    background-color: #fff;
+    color: #000;
+}
+
+.quizLink {
+    font-size: 1.2em;
+    color: #48f;
+    text-decoration: underline;
 }

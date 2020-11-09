@@ -27,26 +27,22 @@
     direction:rtl;
 }
 
+#body {
+    overflow-y: hidden;
+}
+
 .column {
     position:relative;
     float: left;
     width: 50%;
     /* border: 1px solid red; */
-    height: 99vh;
+    height: 100vh;
     overflow-y: scroll;
 }
 
 .column.left {
     position:relative;
     padding-left: 0;
-}
-
-.displayArea {
-    max-width: 60rem;
-    direction: ltr;
-    margin-left: 1.5rem;
-    margin-right: 0.5rem;
-    text-align: center;
 }
 
 .column.left > .displayArea {
@@ -111,4 +107,32 @@ textarea {
 
 img {
     width: 100%;
+}
+
+.displayArea {
+    max-width: 60rem;
+    padding: 3em 0;
+    direction: ltr;
+    margin:auto;
+    text-align: center;
+}
+
+.center {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.center::-webkit-scrollbar {
+    background:#000;
+    width: 2em;
+}
+
+.center::-webkit-scrollbar-thumb {
+    background:#222;
+    width: 2em;
+    border-radius: 2em;
+}
+
+button {
+    border-radius: .3em;
 }

@@ -1,0 +1,62 @@
+#menu {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    margin: 0;
+    width: 100%;
+    padding: 4px 4px 8px 4px;
+    background: #000;
+    text-align: center;
+    min-height: 2.4rem;
+    border:1px solid  red;
+}
+
+button.menu {
+    font-size: 1.2em;
+    margin: 0 .4em;
+    border-radius: 0.3em;
+    padding: 0.2em 0.2em;
+    min-width: 3em;
+    border: 2px solid #fff;
+    color: #fff;
+    background-color: #000;
+}
+
+button.menu:hover{
+    background-color: #fff;
+    color:#000;
+}
+
+button.menu.sel{
+    background-color:#eee;
+    color: #000;
+}
+
+button.menu.published {
+    border-color: springgreen;
+    color: springgreen;
+}
+
+button.menu.published:hover {
+    background-color: springgreen;
+    color: #000;
+}
+
+button.menu.published.sel {
+    background-color: springgreen;
+    color: #000;
+}
+
+#saveadd {
+    float:right;
+    display: inline;
+}
+
+#lessons {
+    display: inline;
+}
+
+#saveadd button.new{
+    background-color: #48f;
+    color: #fff;
+}
