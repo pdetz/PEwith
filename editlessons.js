@@ -32,14 +32,14 @@ $(document).ready(function(){
         e.preventDefault();
         lesson = $(this).blur().toggleClass("published").data("lesson");
         lesson.published = !lesson.published;
-        console.log(lesson.published);
     });
 
     $("#saveadd").on("click", "button.save", function(e){
         e.stopImmediatePropagation();
         $(this).blur;
+        $("input").keyup();
         let saved = savedLessons(allLessons);
-        saveText( JSON.stringify(saved), "MP2lessons.json" );
+        saveText( "MP2 = " + JSON.stringify(saved) + ";", "lessonsmp2.js" );
     });
     $("#saveadd").on("click", "button.new", function(e){
         e.stopImmediatePropagation();
@@ -83,8 +83,6 @@ $(document).ready(function(){
         
     $("#lessonarea").on("keyup", "input.info", function(e){
         e.stopImmediatePropagation();
-        console.log($(this).val());
-
         let input = $(this);
         let prop = input.data("prop");
         let lesson = input.closest("table").data("lesson");
@@ -97,8 +95,6 @@ $(document).ready(function(){
 
     $("#lessonarea").on("keyup", "input.part", function(e){
         e.stopImmediatePropagation();
-        console.log($(this).val());
-
         let input = $(this);
         let part = input.data("part");
         let value = input.val();
