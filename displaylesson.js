@@ -29,6 +29,23 @@ $(document).ready(function(){
         e.stopImmediatePropagation();
         $(this).blur().data("lesson").display(grade, teacher);
     });
+
+    $("#lessonarea").on("click", "span.title", function(e){
+        e.stopImmediatePropagation();
+        $(this).next().slideToggle();
+        console.log($(this).parent());
+    });
+
+    $("span.title").hover(
+        function(e){
+            e.stopImmediatePropagation();
+            $(this).parent().addClass("dim");
+        }, function(e) {
+            e.stopImmediatePropagation();
+            $(this).parent().removeClass("dim");
+
+        }
+    );
 });
 
 function Lesson (saved) {
@@ -54,7 +71,7 @@ function Lesson (saved) {
 function Part (part){
     this.type = part.type;
     this.htmlDisplay = make("div.frame").html(part.html);
-    this.displayTitle = make("span").html(part.name);
+    this.displayTitle = make("span.title").html(part.name);
     this.display = make("div.panel." + part.type)
                     .append(this.displayTitle)
                     .append(this.htmlDisplay);
@@ -65,7 +82,8 @@ Lesson.prototype.display = function(grade,teacher) {
     $("#lessonarea").children().detach();
     lesson.parts.forEach(part => {
         if (part.type=="quiz") {
-            part.htmlDisplay.html(lesson.quizLink(grade, teacher));
+            part.htmlDisplay.remove();
+            part.display.append(lesson.quizLink(grade, teacher));
         }
         $("#lessonarea").append(part.display);
     });
@@ -74,6 +92,11 @@ Lesson.prototype.display = function(grade,teacher) {
 }
 
 Lesson.prototype.quizLink = function(grade, teacher){
-    return "Click the following link to take this week's quiz:<br>" +
-            "<a href='" + this.quizLinks[grade][teacher] + "' class='quizLink' target='blank'>" + this.quizName + "</a>";
+    
+    let link = make("a").attr("href", this.quizLinks[grade][teacher]).attr("target", "_blank");
+
+    let frame = make("div.frame").html("<img src='images/quiz.png' style='width:auto'/><br>")
+                    .append("Click the link to take this week's quiz:<br><span class='quizLink'>" + this.quizName + "</span>");
+
+    return link.append(frame);
 }

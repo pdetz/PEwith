@@ -64,6 +64,7 @@ td {
 svg {
     margin: 0;
 }
+
 .column::-webkit-scrollbar {
     background:#000;
     width: 2em;
@@ -111,28 +112,34 @@ img {
 
 .displayArea {
     max-width: 60rem;
-    padding: 3em 0;
+    padding-bottom: 2rem;
     direction: ltr;
     margin:auto;
     text-align: center;
 }
 
 .center {
-    height: 100vh;
+    position: relative;
+    top: calc(2.4rem + 16px);
+    height: calc(100vh - 2.4rem - 16px);
     overflow-y: scroll;
 }
 
 .center::-webkit-scrollbar {
-    background:#000;
+    background:#060;
     width: 2em;
 }
 
 .center::-webkit-scrollbar-thumb {
-    background:#222;
+    background:#4c6;
     width: 2em;
     border-radius: 2em;
 }
 
 button {
     border-radius: .3em;
+}
+
+a {
+    text-decoration: none;
 }

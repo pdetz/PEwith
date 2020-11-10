@@ -93,3 +93,22 @@ input.quiz {
 button.new:hover, button.save:hover{
     filter: brightness(60%);
 }
+
+span.title {
+    display:block;
+    width:100%;
+    background-color: inherit;
+}
+
+span.title:hover {
+    filter: brightness(50%);
+    cursor: pointer;
+}
+
+span.title svg {
+    display:none;
+}
+
+span.title:hover svg {
+    display: inline;
+}
