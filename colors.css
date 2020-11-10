@@ -12,28 +12,28 @@ button.menu:nth-child(1).sel{
 }
 
 button.menu:nth-child(2){
-    border-color: #f40;
-    color: #f40;
+    border-color: #f60;
+    color: #f60;
 }
 button.menu:nth-child(2):hover{
-    background-color: #f40;
+    background-color: #f60;
     color: #000;
 }
 button.menu:nth-child(2).sel{
-    background-color: #f40;
+    background-color: #f60;
     color: #000;
 }
 
 button.menu:nth-child(3){
-    border-color: #f80;
-    color: #f80;
+    border-color: #fa0;
+    color: #fa0;
 }
 button.menu:nth-child(3):hover{
-    background-color: #f80;
+    background-color: #fa0;
     color: #000;
 }
 button.menu:nth-child(3).sel{
-    background-color: #f80;
+    background-color: #fa0;
     color: #000;
 }
 

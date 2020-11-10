@@ -30,11 +30,6 @@ button.new {
     color: #fff
 }
 
-button:hover {
-    filter: brightness(50%);
-    color: #000
-}
-
 button.new svg {
     height: 16pt;
     fill: #fff
@@ -93,4 +88,8 @@ input.quiz {
     font-size: 1.2em;
     color: #48f;
     text-decoration: underline;
+}
+
+button.new:hover, button.save:hover{
+    filter: brightness(60%);
 }
