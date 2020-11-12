@@ -32,11 +32,12 @@
 }
 
 .column {
-    position:relative;
+    position: relative;
+    top: calc(2.4rem + 16px);
     float: left;
     width: 50%;
     /* border: 1px solid red; */
-    height: 100vh;
+    height: calc(100vh - 2.4rem - 16px);
     overflow-y: scroll;
 }
 

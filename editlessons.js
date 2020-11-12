@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
     const lessonInfo = new URLSearchParams(window.location.search);
-    source = lessonInfo.get("lessons");
+    grade = lessonInfo.get("grade");
 
     let lessons = MP2;
-    if (source == "fun"){
+    if (grade == "fun"){
         lessons = FUN;
     }
 
@@ -15,7 +15,12 @@ $(document).ready(function(){
         allLessons.push(newLesson);
     });
 
-    let lesson = allLessons[allLessons.length - 1].switchTo();
+    let lessonIndex = allLessons.length - 1;
+    if (grade == "fun"){
+        lessonIndex = 0;
+    }
+
+    let lesson = allLessons[lessonIndex].switchTo();
 
     $("#saveadd").append(
         make("button.new").html(PLUS).append(" New")
