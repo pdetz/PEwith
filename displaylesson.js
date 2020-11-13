@@ -1,10 +1,11 @@
 $(document).ready(function(){
+    let nameOf = ["Mr. Detzner", "Ms. Harding"];
+
     let savedLessons = MP2;
 
     const lessonInfo = new URLSearchParams(window.location.search);
     grade = lessonInfo.get("grade");
     teacher = lessonInfo.get("teacher");
-    console.log(lessonInfo.get("week"));
 
     let allLessons = [];
     if (grade == "fun"){
@@ -48,6 +49,31 @@ $(document).ready(function(){
 
         }
     );
+
+    document.addEventListener('copy', function(e) {
+        // e.clipboardData is initially empty, but we can set it to the
+        // data that we want copied onto the clipboard.
+let email ="Hello,\r\nIf you haven't already, please make sure you take this week's quiz. It's called " + lesson.quizName + ". Here is the link:\r\n"+
+            lesson.quizLinks[grade][teacher] + 
+            "\r\n\r\nRemember, you can take the quiz 2 times if you do not like your score!\r\n\r\n"+
+            "Thanks,\r\n" + nameOf[teacher] + 
+            "\r\n\r\n--------------------------------------------------------------------------------\r\n\r\n" +
+            "Hola,\r\nSi aún no lo ha hecho, por favor toma la prueba de esta semana. Se llama " + lesson.quizName + ". Aqui esta el link:\r\n"+
+            lesson.quizLinks[grade][teacher] + 
+            "\r\n\r\nRecuerde, puede tomar la prueba 2 veces si no le gusta su calificacion!\r\n\r\n"+
+            "Gracias,\r\n" + nameOf[teacher];
+        e.clipboardData.setData('text/plain', email);
+        //e.clipboardData.setData('text/html', email);
+      
+        // This is necessary to prevent the current document selection from
+        // being written to the clipboard.
+        e.preventDefault();
+        var tab = window.open('https://mcpsmd.instructure.com/conversations#filter=type=inbox', '_blank');
+        if (tab) {
+            tab.focus();
+            $(tab.document.getElementById("compose-btn")).click();
+        }
+      });
 });
 
 function Lesson (saved) {
