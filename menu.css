@@ -59,3 +59,10 @@ button.menu.published.sel {
     background-color: #48f;
     color: #fff;
 }
+
+#pencil svg {
+    float:left;
+    height: 2em;
+    width: 2em;
+    fill:#fb0;
+}

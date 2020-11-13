@@ -7,6 +7,8 @@ $(document).ready(function(){
     grade = lessonInfo.get("grade");
     teacher = lessonInfo.get("teacher");
 
+    $("#menu").append()
+
     let allLessons = [];
     if (grade == "fun"){
         FUN.forEach(exercise => {
@@ -117,10 +119,10 @@ Lesson.prototype.display = function(grade,teacher) {
     });
     $("button.sel").removeClass("sel");
     lesson.button.addClass("sel");
+    $("#pencil").attr("href", this.quizLinks[grade][teacher]);
 }
 
 Lesson.prototype.quizLink = function(grade, teacher){
-    
     let link = make("a").attr("href", this.quizLinks[grade][teacher]).attr("target", "_blank");
 
     let frame = make("div.frame").html("<img src='images/quiz.png' style='width:auto'/><br>")
