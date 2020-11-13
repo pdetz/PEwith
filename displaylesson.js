@@ -119,7 +119,9 @@ Lesson.prototype.display = function(grade,teacher) {
     });
     $("button.sel").removeClass("sel");
     lesson.button.addClass("sel");
-    $("#pencil").attr("href", this.quizLinks[grade][teacher]);
+    if (grade!="fun"){
+        $("#pencil").attr("href", this.quizLinks[grade][teacher]);
+    }
 }
 
 Lesson.prototype.quizLink = function(grade, teacher){
