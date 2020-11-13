@@ -4,6 +4,7 @@ $(document).ready(function(){
     const lessonInfo = new URLSearchParams(window.location.search);
     grade = lessonInfo.get("grade");
     teacher = lessonInfo.get("teacher");
+    console.log(lessonInfo.get("week"));
 
     let allLessons = [];
     if (grade == "fun"){
@@ -84,7 +85,7 @@ Lesson.prototype.display = function(grade,teacher) {
     lesson.parts.forEach(part => {
         if (part.type=="quiz") {
             part.htmlDisplay.remove();
-            part.display.append(lesson.quizLink(grade, teacher));
+            part.display.html(lesson.quizLink(grade, teacher));
         }
         $("#lessonarea").append(part.display);
     });
