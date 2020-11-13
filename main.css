@@ -121,8 +121,8 @@ img {
 
 .center {
     position: relative;
-    top: calc(2.4rem + 16px);
-    height: calc(100vh - 2.4rem - 16px);
+    top: calc(3rem);
+    height: calc(100vh - 4rem);
     overflow-y: scroll;
 }
 

@@ -27,7 +27,10 @@ $(document).ready(function(){
     }
 
     let lesson = allLessons[allLessons.length - 1];
-    if (grade=="fun") {lesson = allLessons[0]};
+    if (grade=="fun") {
+        lesson = allLessons[0]
+        $("#pencil").remove();
+    };
     lesson.display(grade, teacher);
 
     $("#menu").on("click", "button.menu", function(e){
