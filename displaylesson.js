@@ -97,7 +97,7 @@ function Lesson (saved) {
     });
 
     this.button = make("button.menu").html("Week " + this.week).data("lesson", this);
-    $("#menu").append(this.button);
+    $("#menubuttons").append(this.button);
 
 }
 
