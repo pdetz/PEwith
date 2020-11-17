@@ -249,6 +249,7 @@ function Lesson (saved) {
                         .append(make("td").append("Quiz: ").append(this.quizNameInput))
                         .append(make("td").append("Detzner"))
                         .append(make("td").append("Harding"))
+                        .append(make("td").append("Maryvale"))
                     ));
     for (let grade = 0; grade < 6; grade++){
         let tr = make("tr");
