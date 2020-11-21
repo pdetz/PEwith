@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    colorsCSS();
     let nameOf = ["Mr. Detzner", "Ms. Harding"];
 
     let savedLessons = MP2;
@@ -56,28 +57,9 @@ $(document).ready(function(){
     );
 
     document.addEventListener('copy', function(e) {
-        // e.clipboardData is initially empty, but we can set it to the
-        // data that we want copied onto the clipboard.
-let email ="Hello,\r\nIf you haven't already, please make sure you take this week's quiz. It's called " + lesson.quizName + ". Here is the link:\r\n"+
-            lesson.quizLinks[grade][teacher] + 
-            "\r\n\r\nRemember, you can take the quiz 2 times if you do not like your score!\r\n\r\n"+
-            "Thanks,\r\n" + nameOf[teacher] + 
-            "\r\n\r\n--------------------------------------------------------------------------------\r\n\r\n" +
-            "Hola,\r\nSi aún no lo ha hecho, por favor toma la prueba de esta semana. Se llama " + lesson.quizName + ". Aqui esta el link:\r\n"+
-            lesson.quizLinks[grade][teacher] + 
-            "\r\n\r\nRecuerde, puede tomar la prueba 2 veces si no le gusta su calificacion!\r\n\r\n"+
-            "Gracias,\r\n" + nameOf[teacher];
-        e.clipboardData.setData('text/plain', email);
-        //e.clipboardData.setData('text/html', email);
-      
-        // This is necessary to prevent the current document selection from
-        // being written to the clipboard.
         e.preventDefault();
-        var tab = window.open('https://mcpsmd.instructure.com/conversations#filter=type=inbox', '_blank');
-        if (tab) {
-            tab.focus();
-            $(tab.document.getElementById("compose-btn")).click();
-        }
+        e.clipboardData.setData('text/plain', emailMessage(lesson.quizName, lesson.quizLinks[grade][teacher], nameOf[teacher]));
+        window.open('https://mcpsmd.instructure.com/conversations#filter=type=inbox', '_blank');
       });
 });
 
@@ -97,6 +79,7 @@ function Lesson (saved) {
     });
 
     this.button = make("button.menu").html("Week " + this.week).data("lesson", this);
+    this.button.addClass("w" + this.week);
     $("#menubuttons").append(this.button);
 
 }
@@ -115,15 +98,15 @@ Lesson.prototype.display = function(grade,teacher) {
     $("#lessonarea").children().detach();
     lesson.parts.forEach(part => {
         if (part.type=="quiz") {
-            part.htmlDisplay.remove();
-            part.display.html(lesson.quizLink(grade, teacher));
+            part.htmlDisplay.html(lesson.quizLink(grade, teacher));
         }
         $("#lessonarea").append(part.display);
     });
     $("button.sel").removeClass("sel");
     lesson.button.addClass("sel");
     if (grade!="fun"){
-        $("#pencil").attr("href", this.quizLinks[grade][teacher]);
+        $("#pencil").attr("href", this.quizLinks[grade][teacher])
+                    .attr("class", "w" + lesson.week);
     }
 }
 
@@ -134,4 +117,18 @@ Lesson.prototype.quizLink = function(grade, teacher){
                     .append("Click the link to take this week's quiz:<br><span class='quizLink'>" + this.quizName + "</span>");
 
     return link.append(frame);
+}
+
+function emailMessage(quizName, quizLink, teacherName){
+
+    return  "Hello,\r\nIf you haven't already, please make sure you take this week's quiz. It's called " + quizName + ". Here is the link:\r\n"+
+    quizLink + 
+    "\r\n\r\nRemember, you can take the quiz 2 times if you do not like your score!\r\n\r\n"+
+    "Thanks,\r\n" + teacherName + 
+    "\r\n\r\n--------------------------------------------------------------------------------\r\n\r\n" +
+    "Hola,\r\nSi aún no lo ha hecho, por favor toma la prueba de esta semana. Se llama " + quizName + ". Aqui esta el link:\r\n"+
+    quizLink + 
+    "\r\n\r\nRecuerde, puede tomar la prueba 2 veces si no le gusta su calificacion!\r\n\r\n"+
+    "Gracias,\r\n" + teacherName;
+
 }

@@ -44,7 +44,7 @@ $(document).ready(function(){
         $(this).blur;
         $("input").keyup();
         let saved = savedLessons(allLessons);
-        saveText( "MP2 = " + JSON.stringify(saved) + ";", "lessonsmp2.js" );
+        saveText( "MP2 = " + JSON.stringify(saved) + ";", "lessonsmp2.txt" );
     });
     $("#saveadd").on("click", "button.new", function(e){
         e.stopImmediatePropagation();
@@ -187,14 +187,16 @@ function Lesson (saved) {
     this.published = saved.published;
     this.quizName = saved.quizName;
     this.quizLinks = saved.quizLinks;
+
 /*
-    this.quizLinks = [];
+   this.quizLinks = [];
     for (let grade = 0; grade < 6; grade++){
-        let quizzes = ["D" + grade, "H" + grade];
+        let quizzes = [saved.quizLinks[grade][0], saved.quizLinks[grade][1], ""];
         this.quizLinks.push(quizzes);
-    }
+    }*/
     console.log(this.quizLinks);
-*/
+
+
     saved.parts.forEach(part =>{
         this.parts.push(new Part(part));
     });
@@ -254,7 +256,7 @@ function Lesson (saved) {
     for (let grade = 0; grade < 6; grade++){
         let tr = make("tr");
         tr.append(make("td").append("Grade " + grade));
-        for (let teacher = 0; teacher < 2; teacher++){
+        for (let teacher = 0; teacher < 3; teacher++){
             tr.append(make("td").append(this.quizLinkInput(grade,teacher)));
         }
         this.quizTable.find("tbody").append(tr);
