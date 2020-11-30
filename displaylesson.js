@@ -36,7 +36,7 @@ $(document).ready(function(){
 
     $("#menu").on("click", "button.menu", function(e){
         e.stopImmediatePropagation();
-        $(this).blur().data("lesson").display(grade, teacher);
+        lesson = $(this).blur().data("lesson").display(grade, teacher);
     });
 
     $("#lessonarea").on("click", "span.title", function(e){
@@ -108,6 +108,7 @@ Lesson.prototype.display = function(grade,teacher) {
         $("#pencil").attr("href", this.quizLinks[grade][teacher])
                     .attr("class", "w" + lesson.week);
     }
+    return lesson;
 }
 
 Lesson.prototype.quizLink = function(grade, teacher){
