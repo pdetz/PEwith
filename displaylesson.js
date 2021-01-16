@@ -2,7 +2,7 @@ $(document).ready(function(){
     colorsCSS();
     let nameOf = ["Mr. Detzner", "Ms. Harding"];
 
-    let savedLessons = MP2;
+    let savedLessons = MP2.sort(function(a, b) {return a.week - b.week});;
 
     const lessonInfo = new URLSearchParams(window.location.search);
     grade = lessonInfo.get("grade");

@@ -8,6 +8,8 @@ $(document).ready(function(){
         lessons = FUN;
     }
 
+    lessons.sort(function(a, b) {return a.week - b.week});
+
     let allLessons = [];
 
     lessons.forEach(savedLesson => {
