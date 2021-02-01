@@ -3,7 +3,7 @@ $(document).ready(function(){
     const lessonInfo = new URLSearchParams(window.location.search);
     grade = lessonInfo.get("grade");
 
-    let lessons = MP2;
+    let lessons = MP3;
     if (grade == "fun"){
         lessons = FUN;
     }
@@ -46,7 +46,7 @@ $(document).ready(function(){
         $(this).blur;
         $("input").keyup();
         let saved = savedLessons(allLessons);
-        saveText( "MP2 = " + JSON.stringify(saved) + ";", "lessonsmp2.txt" );
+        saveText( "MP3 = " + JSON.stringify(saved) + ";", "lessonsmp3.txt" );
     });
     $("#saveadd").on("click", "button.new", function(e){
         e.stopImmediatePropagation();
