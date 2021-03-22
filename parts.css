@@ -112,3 +112,7 @@ span.title svg {
 span.title:hover svg {
     display: inline;
 }
+
+leftjust {
+    text-align:left;
+}
